@@ -1,0 +1,16 @@
+#logoColor{
+    color: black;    
+}
+#barraborde{
+    
+    background-color: rgb(156, 218, 218) ;
+    /*background-color: rgb(127, 255, 182);*/
+    border-radius: 00.5rem;
+}
+#banner{
+    max-height: 300px;
+    border-radius: 0.5rem;
+}
+.btn{
+    color: black; 
+}

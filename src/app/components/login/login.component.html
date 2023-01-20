@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="./login.component.css">
+</head>
+
+<body>
+    <div class="login-dark">
+        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            
+            <div class="illustration">
+                <i class="icon ion-ios-locked-outline"></i>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" id="nombreUsuario" placeholder="User" [(ngModel)]="form.username" name="nombreUsuario" required #username="ngModel">
+                <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                    Nombre de Usuario es requerido!
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="password" id="password" placeholder="Password" [(ngModel)]="form.password" name="password" required minlength="8" #password="ngModel">
+                <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">Password es requerida</div>
+                    <div *ngIf="password.errors['minlength']">
+                      Password debe ser mayor que 8 caracteres
+                    </div>
+                  </div>
+            </div>
+
+        
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" (click)="logIn()">Log In</button>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                  Login failed: {{ errorMessage }}
+                </div>
+              </div>
+            <!--<a href="#" class="forgot">Forgot your email or password?</a>-->
+            <div class="form-group">
+                <p>¿No tienes una cuenta?
+                    <a href="../register/register.component.html" class="nav-link" routerLink="/register">Sign Up</a>
+                </p>
+            </div>
+        </form>
+        
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

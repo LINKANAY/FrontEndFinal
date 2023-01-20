@@ -1,0 +1,36 @@
+#bg-presentacion{
+    background-color: rgb(156, 218, 218) ;
+    border-radius: 0.5rem;
+}
+#detalle{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#nombre{
+    font-family: 'Didot', Georgia, Impact, 'American Typewriter';
+    font-weight: bold;
+    margin-top: 5%;
+}
+#detalleacercade{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    text-align: justify;
+}
+#perfilfoto{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    position: relative;
+    max-width: 150px;
+    max-height: 30%;
+}
+.btn{
+    margin-top: 5%;
+}
+
+#banner{
+    max-height: 250px;
+    border-radius: 0.5rem;
+}

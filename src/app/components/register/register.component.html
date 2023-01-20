@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="./register.component.css">
+</head>
+
+<body>
+    <div class="login-dark">
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            
+            <div class="illustration">
+                <i class="icon ion-ios-locked-outline"></i>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Nombre de Usuario" [(ngModel)]="form.username" name="nombreUsuario" required minlength="3" maxlength="20" #username="ngModel">
+                <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                    <div *ngIf="username.errors['required']">Nombre de usuario es requerido</div>
+                    <div *ngIf="username.errors['minlength']">
+                      Nombre de usuario debe ser mayor a 3 caracteres
+                    </div>
+                    <div *ngIf="username.errors['maxlength']">
+                        Nombre de usuario debe ser menor a 20 caracteres
+                    </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="email" placeholder="Email" [(ngModel)]="form.email" name="email" required email #email="ngModel">
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">Email es requerido</div>
+                    <div *ngIf="email.errors['email']">
+                      Email debe ser un valor correcto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control"  placeholder="Password" [(ngModel)]="form.password" name="password" required minlength="8" #password="ngModel">
+                <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">Password es requerida</div>
+                    <div *ngIf="password.errors['minlength']">
+                      Password no debe ser menor que 8 caracteres
+                    </div>
+                  </div>
+            </div>
+
+        
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                <button class="btn btn-primary btn-block" type="submit">
+                    <a href="#" class="nav-link" routerLink="/login">
+                        Sign Up
+                    </a>
+                </button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+              </div>            
+        </form>
+        
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
