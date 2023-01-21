@@ -15,8 +15,7 @@ export class AcercadeComponent implements OnInit {
   persona: Persona = new Persona("", "", "", "", "", "", "");
   
   constructor(public personaService: PersonaService,
-              private tokenStorageService: TokenStorageService,
-              private router: Router) { }
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.cargarPersona();

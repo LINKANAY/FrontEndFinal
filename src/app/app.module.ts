@@ -11,9 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './service/login/auth.service';
-import { AuthGuard } from './service/login/auth-guard';
 import { AcercadeComponent } from './components/acercade/acercade.component';
 import { EditAcercadeComponent } from './components/acercade/edit-acercade.component';
+import { ExperLabComponent } from './components/exper-lab/exper-lab.component';
+import { EditExperLabComponent } from './components/exper-lab/edit-exper-lab.component';
+import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.component';
 
 
 @NgModule({
@@ -24,6 +26,9 @@ import { EditAcercadeComponent } from './components/acercade/edit-acercade.compo
     RegisterComponent,
     AcercadeComponent,
     EditAcercadeComponent,
+    ExperLabComponent,
+    EditExperLabComponent,
+    NewExperLabComponent
   ],
   imports: [
     BrowserModule,

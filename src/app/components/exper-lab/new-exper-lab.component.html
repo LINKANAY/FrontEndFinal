@@ -1,0 +1,56 @@
+<div class="contailer">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onCreate()" novalidate >
+                <div class="mb-3 form-control">
+                    <label for="nombreEmpresa" class="col-form-label">Nombre Empresa: </label>
+                    <input type="text" class="form-control" id="nombreEmpresa" [(ngModel)]="nombreEmpresa"
+                        name="nombreEmpresa" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="cargo" class="col-form-label">Cargo: </label>
+                    <input type="text" class="form-control" id="cargo" [(ngModel)]="cargo" name="cargo" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="fechaDeEntrada" class="col-form-label">Fecha de Ingreso: </label>
+                    <input type="text" class="form-control" id="fechaDeEntrada" [(ngModel)]="fechaDeEntrada"
+                        name="fechaDeEntrada" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="fechaDeSalida" class="col-form-label">Fecha de Salida: </label>
+                    <input type="text" class="form-control" id="fechaDeSalida" [(ngModel)]="fechaDeSalida"
+                        name="fechaDeSalida" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="logo" class="col-form-label">Logo: </label>
+                    <input type="text" class="form-control" id="logo" [(ngModel)]="logo" name="logo" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="ciudad" class="col-form-label">Ciudad: </label>
+                    <input type="text" class="form-control" id="ciudad" [(ngModel)]="ciudad" name="ciudad" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="pais" class="col-form-label">Pais: </label>
+                    <input type="text" class="form-control" id="pais" [(ngModel)]="pais" name="pais" required>
+                </div>
+                <div class="mb-3 form-control">
+
+                    <div class="input-group">
+                        <span class="input-group-text">Tareas</span>
+                        <textarea class="form-control" aria-label="Tareas" type="text" class="form-control" id="tareas"
+                            [(ngModel)]="tareas[0]" name="tareas" required></textarea>
+                        <textarea class="form-control" aria-label="Tareas" type="text" class="form-control" id="tareas"
+                            [(ngModel)]="tareas[1]" name="tareas" required></textarea>
+                        <textarea class="form-control" aria-label="Tareas" type="text" class="form-control" id="tareas"
+                            [(ngModel)]="tareas[2]" name="tareas" required></textarea>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

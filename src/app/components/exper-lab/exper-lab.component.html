@@ -1,0 +1,48 @@
+<div class="border" id="exper" >
+  <!--Boton de creacion-->
+    <div class="row">        
+        <div class="col-auto">
+            <!--Experiencias-->
+            <h1 id="tituloedit">Experiencias</h1>
+        </div>
+        <div class="col-auto">
+            <button type="button" class="btn btn-outline-info" routerLink="/newExperLab" *ngIf="isLogged">
+              <i class="bi bi-clipboard-plus"></i>
+              Nueva Experiencia
+              <!--*ngIf="isLogged"-->
+            </button>
+          </div>
+    </div>
+    <div class="row d-flex justify-content-evenly" *ngFor="let expe of experLab">
+        <div class="col-auto"><!--LOGO-->
+            <img src={{expe.logo}} alt="logoEmpresa" id="margenimagenes">
+        </div>
+        <div class="col-auto"><!--INFORMACION-->
+            <ul class="list-group-flush">
+                <li class="list-group-item"><strong>{{expe.nombreEmpresa}}</strong></li><!--NOMBRE EMPRESA-->
+                <li class="list-group-item">{{expe.cargo}}</li><!--CARGO-->
+                <li class="list-group-item">{{expe.fechaDeEntrada}} - {{expe.fechaDeSalida}}</li><!--FECHAS-->
+                <li class="list-group-item">{{expe.ciudad}} - {{expe.pais}}</li><!--UBICACION-->
+            </ul>
+        </div>
+        <div class="col-auto"><!--TAREAS-->
+            <ul class="list-group-flush" >
+                <h4><strong>Tareas</strong></h4>
+                <li class="list-group-item" *ngFor="let exper of expe.tareas">
+                    {{exper}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-auto" *ngIf="isLogged"><!--BOTONES-->
+            <button type="buttom" class="btn btn-outline-info" routerLink="/editExperLab/{{expe.id}}">
+                
+                <i class="bi bi-pencil-square"></i>Editar
+            </button>
+            <button type="buttom" class="btn btn-outline-info" (click)="delete(expe.id)">
+                <i class="bi bi-pencil-square"></i>Eliminar
+            </button>
+        </div>
+
+    </div>
+</div>
+
