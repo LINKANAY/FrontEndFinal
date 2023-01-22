@@ -1,0 +1,19 @@
+#tituloedit{
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#skill{
+    background-color: rgb(156, 218, 218) ;
+    border-radius: 0.5rem;
+}
+.btn{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.progress{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+}

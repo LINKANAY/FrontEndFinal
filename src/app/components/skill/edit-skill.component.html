@@ -1,0 +1,18 @@
+<div class="container" *ngIf="editSkill">
+    <form (ngSubmit)="onUpdate()" novalidate>
+        <!--DATOS-->
+        <div class="form-control">
+            <label for="nombreSkill" class="col-form-label">Nombre Skill: </label>
+            <input type="text" class="form-control" [(ngModel)]="editSkill.nombreSkill" name="nombreSkill" required>
+        </div>
+        <div class="form-control">
+            <label for="porcentaje" class="col-form-label">Porcentaje: </label>
+            <input type="text" class="form-control" [(ngModel)]="editSkill.porcentaje" name="porcentaje" required>
+        </div>
+        <!--BOTONES-->
+        <div class="mb-3">
+            <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+    </form>
+</div>

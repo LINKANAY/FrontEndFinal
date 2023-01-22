@@ -8,6 +8,8 @@ import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.compo
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { EditSkillComponent } from './components/skill/edit-skill.component';
+import { NewSkillComponent } from './components/skill/new-skill.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -23,7 +25,8 @@ const routes: Routes = [
   {path: 'editExperLab/:id', component: EditExperLabComponent},
   {path: 'newEducacion', component: NewEducacionComponent},
   {path: 'editEducacion/:id', component: EditEducacionComponent},
-  
+  {path: 'newSkill', component: NewSkillComponent},
+  {path: 'editSkill/:id', component: EditSkillComponent}
   
 ];
 

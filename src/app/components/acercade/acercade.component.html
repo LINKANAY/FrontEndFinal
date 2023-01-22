@@ -52,9 +52,9 @@
           <p>{{persona.sobreMi}}</p>
         </div>
         <div class="col-auto" *ngIf="isLogged"><!--BOTON EDICION-->
-            <button type="button" class="btn btn-outline-info " routerLink="/editAcer/:{{persona.id}}"><!--*ngIf="isLogged"-->
-                <i class="bi bi-pencil-square"></i>
-                Editar
+            <button type="button" class="btn btn-outline-info" routerLink="/editAcer/:{{persona.id}}"><!--*ngIf="isLogged"-->
+              <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                <i class="bi bi-pencil-square"></i> Editar
               </button>
         </div>
 

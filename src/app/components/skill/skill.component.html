@@ -1,0 +1,42 @@
+<div class="border" id="skill" *ngIf="skills">
+    <!--TITULO Y BOTON DE CREACION-->
+    <div class="row">
+        <div class="col-auto">
+            <h1 id="tituloedit">Skills</h1>
+        </div>
+        <div class="col-auto" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-info" routerLink="/newSkill">
+                <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
+                <i class="bi bi-clipboard-plus"></i>
+                Nuevo Skill
+              </button>
+        </div>
+    </div>
+    <!--skills-->
+    <div *ngFor="let skill of skills">
+        <div class="row">
+            <div class="col-auto" id="tituloedit">
+                <h3 >{{skill.nombreSkill}}</h3>
+            </div>
+            
+            <div class="col-auto" *ngIf="isLogged" ><!--BOTONES-->                
+                <button type="buttom" class="btn btn-outline-info" routerLink="/editSkill/{{skill.id}}">
+                    <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+                <button type="buttom" class="btn btn-outline-info" (click)="delete(skill.id)">
+                    <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                    <i class="bi bi-x"></i> Eliminar
+                </button>
+            </div>
+        </div>
+         <div>
+            <div class="progress " role="progressbar" aria-label="Example with label" 
+         aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar " style="width: {{skill.porcentaje}}%">{{skill.porcentaje}}%</div>
+        </div>
+         </div>
+        
+    </div>
+       
+</div>

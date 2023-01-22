@@ -19,6 +19,9 @@ import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.compo
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { EditEducacionComponent } from './components/educacion/edit-educacion.component';
 import { NewEducacionComponent } from './components/educacion/new-educacion.component';
+import { SkillComponent } from './components/skill/skill.component';
+import { NewSkillComponent } from './components/skill/new-skill.component';
+import { EditSkillComponent } from './components/skill/edit-skill.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { NewEducacionComponent } from './components/educacion/new-educacion.comp
     NewExperLabComponent,
     EducacionComponent,
     NewEducacionComponent,
-    EditEducacionComponent
+    EditEducacionComponent,
+    SkillComponent,
+    NewSkillComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,

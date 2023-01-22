@@ -6,6 +6,7 @@
         </div>
         <div class="col-auto" *ngIf="isLogged">
             <button type="button" class="btn btn-outline-info" routerLink="/newEducacion">
+                <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
                 <i class="bi bi-clipboard-plus"></i>
                 Nueva Educacion
                 <!--*ngIf="isLogged"-->
@@ -30,11 +31,12 @@
         </div>
         <div class="col-auto" *ngIf="isLogged"><!--BOTONES-->
             <button type="buttom" class="btn btn-outline-info" routerLink="/editEducacion/{{educacion.id}}">
-                
-                <i class="bi bi-pencil-square"></i>Editar
+                <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                <i class="bi bi-pencil-square"></i> Editar
             </button>
             <button type="buttom" class="btn btn-outline-info" (click)="delete(educacion.id)">
-                <i class="bi bi-pencil-square"></i>Eliminar
+                <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                <i class="bi bi-x"></i> Eliminar
             </button>
         </div>
     </div>
