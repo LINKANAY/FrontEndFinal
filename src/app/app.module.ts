@@ -16,6 +16,9 @@ import { EditAcercadeComponent } from './components/acercade/edit-acercade.compo
 import { ExperLabComponent } from './components/exper-lab/exper-lab.component';
 import { EditExperLabComponent } from './components/exper-lab/edit-exper-lab.component';
 import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.component';
+import { EducacionComponent } from './components/educacion/educacion.component';
+import { EditEducacionComponent } from './components/educacion/edit-educacion.component';
+import { NewEducacionComponent } from './components/educacion/new-educacion.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.compo
     EditAcercadeComponent,
     ExperLabComponent,
     EditExperLabComponent,
-    NewExperLabComponent
+    NewExperLabComponent,
+    EducacionComponent,
+    NewEducacionComponent,
+    EditEducacionComponent
   ],
   imports: [
     BrowserModule,

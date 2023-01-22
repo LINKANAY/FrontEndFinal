@@ -1,0 +1,41 @@
+<div class="border" id="educa">
+    <!--TITULO-->
+    <div class="row">
+        <div class="col-auto">
+            <h1 id="tituloedit">Educacion</h1>
+        </div>
+        <div class="col-auto" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-info" routerLink="/newEducacion">
+                <i class="bi bi-clipboard-plus"></i>
+                Nueva Educacion
+                <!--*ngIf="isLogged"-->
+              </button>
+        </div>
+    </div>
+    <!--DATOS-->
+    <div class="row d-flex justify-content-evenly" *ngFor="let educacion of educaciones">
+        <div class="col-auto" ><!--LOGO-->
+            <img src={{educacion.logo}} alt="logoEducacion" id="margenimagenes">
+        </div>
+        <div class="col-auto"><!--DATOS-->
+            <ul class="list-group-flush">
+                <li class="list-group-item"><strong>{{educacion.nombreInstitucion}}</strong></li>
+                <li class="list-group-item">{{educacion.titulo}}</li>
+                <li class="list-group-item">{{educacion.fechaDeIngreso}} - {{educacion.fechaDeEgreso}}</li>
+                <li class="list-group-item">{{educacion.ciudad}} - {{educacion.pais}}</li>
+            </ul>
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-auto" *ngIf="isLogged"><!--BOTONES-->
+            <button type="buttom" class="btn btn-outline-info" routerLink="/editEducacion/{{educacion.id}}">
+                
+                <i class="bi bi-pencil-square"></i>Editar
+            </button>
+            <button type="buttom" class="btn btn-outline-info" (click)="delete(educacion.id)">
+                <i class="bi bi-pencil-square"></i>Eliminar
+            </button>
+        </div>
+    </div>
+</div>

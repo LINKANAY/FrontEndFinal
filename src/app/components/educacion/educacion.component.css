@@ -1,0 +1,23 @@
+#educa{
+    background-color: rgb(156, 218, 218) ;
+    border-radius: 0.5rem;
+}
+#logoedu{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 0px;
+}
+#tituloedit{
+    margin-left: 5%;
+}
+.btn{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#margenimagenes{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 180px;
+    height: 90px;
+}

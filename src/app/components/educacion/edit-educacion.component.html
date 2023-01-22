@@ -1,0 +1,48 @@
+<div class="contailer" *ngIf="editEducacion"><!---->
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onUpdate()" novalidate >
+                <div class="mb-3 form-control">
+                    <label for="nombreInstitucion" class="col-form-label">Nombre Institucion: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.nombreInstitucion" 
+                    name="nombreInstitucion" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="titulo" class="col-form-label">Titulo: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.titulo" 
+                    name="titulo" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="fechaDeIngreso" class="col-form-label">Fecha de Ingreso: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.fechaDeIngreso"
+                        name="fechaDeIngreso" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="fechaDeEgreso" class="col-form-label">Fecha de Egreso: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.fechaDeEgreso" 
+                    name="fechaDeEgreso" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="logo" class="col-form-label">Logo: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.logo"
+                     name="logo" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="ciudad" class="col-form-label">Ciudad: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.ciudad" 
+                    name="ciudad" required>
+                </div>
+                <div class="mb-3 form-control">
+                    <label for="pais" class="col-form-label">Pais: </label>
+                    <input type="text" class="form-control" [(ngModel)]="editEducacion.pais" 
+                    name="pais" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Modificar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

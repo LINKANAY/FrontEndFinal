@@ -33,12 +33,5 @@ export class ExperLabService {
   public details(id: number): Observable<any> {
     return this.http.get<any>(this.experLabURL + `details/${id}`, cabecera);
   }
-/*
-  public verPersona(): Observable<ExperienciaLaboral>{
-    return this.http.get<ExperienciaLaboral>(this.experLabURL + 'verPersona', cabecera);
-  }*/
-
-
-
   
 }
