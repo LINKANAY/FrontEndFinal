@@ -1,0 +1,22 @@
+<div class="container" *ngIf="editProyecto">
+    <form (ngSubmit)="onUpdate()" novalidate>
+        <!--DATOS-->
+        <div class="form-control">
+            <label for="nombreProyecto" class="col-form-label">Nombre Skill: </label>
+            <input type="text" class="form-control" [(ngModel)]="editProyecto.nombreProyecto" name="nombreProyecto" required>
+        </div>
+        <div class="form-control">
+            <label for="descripcion" class="col-form-label">Porcentaje: </label>
+            <input type="text" class="form-control" [(ngModel)]="editProyecto.descripcion" name="descripcion" required>
+        </div>
+        <div class="form-control">
+            <label for="img" class="col-form-label">Imagen: </label>
+            <input type="text" class="form-control" [(ngModel)]="editProyecto.img" name="img" required>
+        </div>
+        <!--BOTONES-->
+        <div class="mb-3">
+            <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+    </form>
+</div>

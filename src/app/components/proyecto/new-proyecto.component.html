@@ -1,0 +1,22 @@
+<div class="container">
+    <form (ngSubmit)="onCreate()" novalidate>
+        <!--DATOS-->
+        <div class="form-control">
+            <label for="nombreProyecto" class="col-form-label">Nombre Proyecto: </label>
+            <input type="text" class="form-control" [(ngModel)]="nombreProyecto" name="nombreProyecto" required>
+        </div>
+        <div class="form-control">
+            <label for="descripcion" class="col-form-label">Descripcion: </label>
+            <input type="text" class="form-control" [(ngModel)]="descripcion" name="descripcion" required>
+        </div>
+        <div class="form-control">
+            <label for="img" class="col-form-label">Imagen: </label>
+            <input type="text" class="form-control" [(ngModel)]="img" name="img" required>
+        </div>
+        <!--BOTONES-->
+        <div class="mb-3">
+            <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+    </form>
+</div>

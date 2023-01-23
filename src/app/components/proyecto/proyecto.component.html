@@ -1,0 +1,51 @@
+
+<div id="proyec" *ngIf="proyectos">
+    <!--TITULO-->
+    <div class="row">
+        <div class="col-auto">
+            <h1 id="tituloedit">Proyectos</h1>
+        </div>
+        <div class="col-auto" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-info" routerLink="/newProyecto">
+                <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
+                <i class="bi bi-clipboard-plus"></i>
+                Nuevo Proyecto
+                <!--*ngIf="isLogged"-->
+              </button>
+        </div>
+    </div>
+    <!--PROYECTOS-->
+
+    <div class="row" id="cont">
+        <ul class="list-group-horizontal col-auto" *ngFor="let proyecto of proyectos" id="espacio">
+            <li class="list-group-item">
+                <div class="card"  style="width: 18rem;" >
+                    <a href="#"><img class="img-fluid card-img-top" src={{proyecto.img}} alt="imagen {{proyecto.nombreProyecto}}"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{proyecto.nombreProyecto}}</h3>
+                        <p class="card-text">{{proyecto.descripcion}}</p>
+                    </div>
+                    <div class="card-footer" *ngIf="isLogged" ><!--BOTONES-->
+                        <button type="buttom" class="btn btn-outline-info" routerLink="/editProyecto/{{proyecto.id}}">
+                            <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </button>
+                        <button type="buttom" class="btn btn-outline-info" (click)="delete(proyecto.id)">
+                            <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                            <i class="bi bi-x"></i> Eliminar
+                        </button>
+                    </div>
+                </div> 
+            </li>
+        </ul>
+    </div>
+</div>
+    
+
+
+
+
+
+
+
+

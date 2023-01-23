@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/service/login/token-storage.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-pagina404',
+  templateUrl: './pagina404.component.html',
+  styleUrls: ['./pagina404.component.css']
 })
-export class HomeComponent implements OnInit {
+export class Pagina404Component implements OnInit {
   
   isLoggedIn = false;
   windowScrolled = false;
 
-  constructor(private tokenStorage: TokenStorageService){
+  constructor(private tokenStorage: TokenStorageService,
+    private router: Router){
 
     
   }
@@ -34,9 +36,8 @@ export class HomeComponent implements OnInit {
   }
   
   scrollToTop(): void {
-    window.scrollTo(0, 0);
+    this.router.navigate(['home']);
   }
 
-  
 
 }

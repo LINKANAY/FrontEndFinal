@@ -1,0 +1,36 @@
+#logoColor{
+  color: black;    
+}
+#barraborde{
+  
+  background-color: rgb(156, 218, 218) ;
+  /*background-color: rgb(127, 255, 182);*/
+  border-radius: 00.5rem;
+}
+#banner{
+  max-height: 300px;
+  border-radius: 0.5rem;
+}
+.btn{
+  color: black; 
+}
+
+
+.to-top {
+  bottom: 0;
+  cursor: pointer;
+  margin: 0 8px 12px 0;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+}
+
+.show-scrollTop {
+  opacity: 1 !important;
+  transition: all 3s ease-in-out;
+}
+#imgscroll{
+  bottom: 25px;
+  right: 25px;
+  background-color: chartreuse;
+}

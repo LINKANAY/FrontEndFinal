@@ -11,7 +11,7 @@ import { SkillService } from 'src/app/service/skill.service';
 export class NewSkillComponent {
 
   nombreSkill: string = '';
-  porcentaje: number = 0;
+  porcentaje: number = null;
 
   constructor(private skillService: SkillService, private router: Router) {
 
@@ -23,7 +23,7 @@ export class NewSkillComponent {
     this.skillService.create(skill).subscribe({
       next: (res) => {
         console.log(res);
-        alert("Educacion añadida");
+        alert("Skill añadido");
         this.router.navigate(['']);
       }, error: (err) => {
         alert("Fallo");

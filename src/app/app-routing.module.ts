@@ -7,6 +7,9 @@ import { EditExperLabComponent } from './components/exper-lab/edit-exper-lab.com
 import { NewExperLabComponent } from './components/exper-lab/new-exper-lab.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { Pagina404Component } from './components/pagina404/pagina404.component';
+import { EditProyectoComponent } from './components/proyecto/edit-proyecto.component';
+import { NewProyectoComponent } from './components/proyecto/new-proyecto.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EditSkillComponent } from './components/skill/edit-skill.component';
 import { NewSkillComponent } from './components/skill/new-skill.component';
@@ -26,8 +29,11 @@ const routes: Routes = [
   {path: 'newEducacion', component: NewEducacionComponent},
   {path: 'editEducacion/:id', component: EditEducacionComponent},
   {path: 'newSkill', component: NewSkillComponent},
-  {path: 'editSkill/:id', component: EditSkillComponent}
-  
+  {path: 'editSkill/:id', component: EditSkillComponent},
+  {path: 'newProyecto', component: NewProyectoComponent},
+  {path: 'editProyecto/:id', component: EditProyectoComponent},
+  //ruta error
+  {path: '**', component:Pagina404Component},
 ];
 
 @NgModule({
