@@ -26,6 +26,7 @@ import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { NewProyectoComponent } from './components/proyecto/new-proyecto.component';
 import { EditProyectoComponent } from './components/proyecto/edit-proyecto.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { Pagina404Component } from './components/pagina404/pagina404.component';
     ProyectoComponent,
     NewProyectoComponent,
     EditProyectoComponent,
-    Pagina404Component
+    Pagina404Component,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

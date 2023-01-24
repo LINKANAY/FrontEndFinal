@@ -4,10 +4,7 @@
     justify-content: center;
     flex-direction: column;
 }
-#skill{
-    background-color: rgb(156, 218, 218) ;
-    border-radius: 0.5rem;
-}
+
 .btn{
     margin-top: 5%;
     margin-bottom: 5%;

@@ -1,12 +1,13 @@
-<div class="border" id="exper" >
+<div class="border border-dark" id="fondocolor">
   <!--Boton de creacion-->
-    <div class="row">        
+    <div class="row">
+        <div class="col-1"></div>       
         <div class="col-auto">
             <!--Experiencias-->
             <h1 id="tituloedit">Experiencias</h1>
         </div>
         <div class="col-auto">
-            <button type="button" class="btn btn-outline-info" routerLink="/newExperLab" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-dark" routerLink="/newExperLab" *ngIf="isLogged">
                 <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
               <i class="bi bi-clipboard-plus"></i>
               Nueva Experiencia
@@ -35,11 +36,11 @@
             </ul>
         </div>
         <div class="col-auto" *ngIf="isLogged"><!--BOTONES-->
-            <button type="buttom" class="btn btn-outline-info" routerLink="/editExperLab/{{expe.id}}">
+            <button type="buttom" class="btn btn-outline-dark" routerLink="/editExperLab/{{expe.id}}">
                 <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
                 <i class="bi bi-pencil-square"></i> Editar
             </button>
-            <button type="buttom" class="btn btn-outline-info" (click)="delete(expe.id)">
+            <button type="buttom" class="btn btn-outline-dark" (click)="delete(expe.id)">
                 <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
                 <i class="bi bi-x"></i> Eliminar
             </button>

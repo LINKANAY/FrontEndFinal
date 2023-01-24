@@ -1,6 +1,6 @@
 
 
-<div id="bg-presentacion" >
+<div id="fondocolor" class="border border-dark">
     <!--CARROUSEL-->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="banner">
@@ -52,7 +52,7 @@
           <p>{{persona.sobreMi}}</p>
         </div>
         <div class="col-auto" *ngIf="isLogged"><!--BOTON EDICION-->
-            <button type="button" class="btn btn-outline-info" routerLink="/editAcer/:{{persona.id}}"><!--*ngIf="isLogged"-->
+            <button type="button" class="btn btn-outline-dark" routerLink="/editAcer/:{{persona.id}}"><!--*ngIf="isLogged"-->
               <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
                 <i class="bi bi-pencil-square"></i> Editar
               </button>

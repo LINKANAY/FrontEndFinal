@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+#fondocolor{
+    background-color: rgb(234, 207, 207);
+    border-radius: 0.5rem;
+}
