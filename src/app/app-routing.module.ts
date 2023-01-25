@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditAcercadeComponent } from './components/acercade/edit-acercade.component';
+import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.component';
 import { EditEducacionComponent } from './components/educacion/edit-educacion.component';
 import { NewEducacionComponent } from './components/educacion/new-educacion.component';
 import { EditExperLabComponent } from './components/exper-lab/edit-exper-lab.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
   //rutas al index
   {path: '', component: HomeComponent},  
   {path: 'home', component: HomeComponent},
-  //rutas de creacion y edicion
+  //rutas de creacion y edicion  
+  {path: 'newAcercaDe', component: NewAcercaDeComponent},
   {path: 'editAcer/:id', component: EditAcercadeComponent},
   {path: 'newExperLab', component: NewExperLabComponent},
   {path: 'editExperLab/:id', component: EditExperLabComponent},

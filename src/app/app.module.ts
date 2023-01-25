@@ -27,8 +27,7 @@ import { NewProyectoComponent } from './components/proyecto/new-proyecto.compone
 import { EditProyectoComponent } from './components/proyecto/edit-proyecto.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-
-
+import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +49,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     NewProyectoComponent,
     EditProyectoComponent,
     Pagina404Component,
-    FileUploadComponent
+    FileUploadComponent,
+    NewAcercaDeComponent 
   ],
   imports: [
     BrowserModule,

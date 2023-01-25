@@ -1,0 +1,43 @@
+<div class="edit-form">
+    <form (ngSubmit)="onCreate()" novalidate>
+        <div class="mb-3 form-control">
+            <label for="nombre" class="col-form-label">Nombre: </label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre"
+                required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="apellido" class="col-form-label">Apellido: </label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="apellido" name="apellido" required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="sobreMi" class="col-form-label">Sobre Mi: </label>
+            <input type="text" class="form-control" id="sobreMi" [(ngModel)]="sobreMi"
+                name="sobreMi" required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="titulo" class="col-form-label">Titulo: </label>
+            <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo" name="titulo"
+                required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="foto" class="col-form-label">Foto: </label>
+            <input type="text" class="form-control" id="foto" [(ngModel)]="foto" name="foto" required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="ciudad" class="col-form-label">Ciudad: </label>
+            <input type="text" class="form-control" id="ciudad" [(ngModel)]="ciudad" name="ciudad" required>
+        </div>
+        <div class="mb-3 form-control">
+            <label for="pais" class="col-form-label">Pais: </label>
+            <input type="text" class="form-control" id="pais" [(ngModel)]="pais" name="pais" required>
+        </div>
+        <div class="form-footer">
+            <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
+    </form>
+    
+</div>
+
+
+

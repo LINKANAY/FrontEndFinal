@@ -13,31 +13,34 @@ import { PersonaService } from 'src/app/service/persona.service';
 })
 export class EditAcercadeComponent implements OnInit {
 
-  editPersona : Persona = null;
+  editPersona : Persona;
+
   constructor(public personaService: PersonaService,
               private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.personaService.getPersona(1).subscribe(
-      data => {
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.personaService.details(id).subscribe({
+      next: (data) => {
         this.editPersona = data;
-      }, err => {
+      }, error: (err) => {
         alert("Error al cargar datos");
         this.router.navigate(['']);
       }
-    );
+    });
+    
   }
 
   onUpdate(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.personaService.update(1, this.editPersona).subscribe(
-      data => {
+    const id = +this.activatedRoute.snapshot.paramMap.get('id'); 
+    this.personaService.update(id, this.editPersona).subscribe({
+      next: (err) => {
         this.router.navigate(['']);
-      }, err => {
+      }, error: (err) => {
         alert("Error al actualizar");
         this.router.navigate(['']);
       }
-    )
+    });
   }
 }

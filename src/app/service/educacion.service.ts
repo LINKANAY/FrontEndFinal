@@ -10,27 +10,28 @@ const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})
 })
 export class EducacionService {
 
-  educacionURL = 'http://localhost:8080/educacion/';
+  //Url = 'http://localhost:8080/educacion/';
+  Url = 'https://portfolio-sebastian-linkanay.koyeb.app/educacion/'; 
 
   constructor(private http: HttpClient) { }
 
   public create(educacion: Educacion): Observable<any> {
-    return this.http.post(this.educacionURL + 'create', educacion, cabecera);
+    return this.http.post(this.Url + 'create', educacion, cabecera);
   }
 
   public list(): Observable<any> {
-    return this.http.get<any>(this.educacionURL + 'list', cabecera);
+    return this.http.get<any>(this.Url + 'list', cabecera);
   }
 
   public update(id: number, educacion: Educacion): Observable<any>{
-    return this.http.put<any>(this.educacionURL + `update/${id}`, educacion, cabecera);
+    return this.http.put<any>(this.Url + `update/${id}`, educacion, cabecera);
   }
 
   public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.educacionURL + `delete/${id}`, cabecera);
+    return this.http.delete<any>(this.Url + `delete/${id}`, cabecera);
   }
 
   public details(id: number): Observable<any> {
-    return this.http.get<any>(this.educacionURL + `details/${id}`, cabecera);
+    return this.http.get<any>(this.Url + `details/${id}`, cabecera);
   }
 }

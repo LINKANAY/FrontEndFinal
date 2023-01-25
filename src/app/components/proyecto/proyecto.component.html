@@ -1,5 +1,5 @@
 
-<div id="fondocolor" class="border border-dark" *ngIf="proyectos">
+<div id="fondocolor" class="border border-dark" >
     <!--TITULO-->
     <div class="row">
         <div class="col-1"></div> 
@@ -17,7 +17,7 @@
     </div>
     <!--PROYECTOS-->
 
-    <div class="row" id="cont">
+    <div class="row" id="cont" *ngIf="proyectos">
         <ul class="list-group-horizontal col-auto" *ngFor="let proyecto of proyectos" id="espacio">
             <li class="list-group-item">
                 <div class="card"  style="width: 18rem;" >

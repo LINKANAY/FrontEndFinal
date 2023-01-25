@@ -10,27 +10,28 @@ const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})
 })
 export class ProyectoService {
 
-  URL = 'http://localhost:8080/proyectos/';
+  //Url = 'http://localhost:8080/proyectos/';
+  Url = 'https://portfolio-sebastian-linkanay.koyeb.app/proyectos/'; 
 
   constructor(private http: HttpClient) { }
 
   public create(proyecto: Proyecto): Observable<any> {
-    return this.http.post(this.URL + 'create', proyecto, cabecera);
+    return this.http.post(this.Url + 'create', proyecto, cabecera);
   }
 
   public list(): Observable<any> {
-    return this.http.get<any>(this.URL + 'list', cabecera);
+    return this.http.get<any>(this.Url + 'list', cabecera);
   }
 
   public update(id: number, proyecto: Proyecto): Observable<any>{
-    return this.http.put<any>(this.URL + `update/${id}`, proyecto, cabecera);
+    return this.http.put<any>(this.Url + `update/${id}`, proyecto, cabecera);
   }
 
   public delete(id: number): Observable<any>{
-    return this.http.delete<any>(this.URL + `delete/${id}`, cabecera);
+    return this.http.delete<any>(this.Url + `delete/${id}`, cabecera);
   }
 
   public details(id: number): Observable<any> {
-    return this.http.get<any>(this.URL + `details/${id}`, cabecera);
+    return this.http.get<any>(this.Url + `details/${id}`, cabecera);
   }
 }

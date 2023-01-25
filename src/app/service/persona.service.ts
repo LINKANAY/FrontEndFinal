@@ -10,24 +10,29 @@ const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})
 })
 export class PersonaService {
 
-  personaURL = 'http://localhost:8080/personas/';
+  //Url = 'http://localhost:8080/personas/';
+  Url = 'https://portfolio-sebastian-linkanay.koyeb.app/personas/'; 
 
   constructor(private http: HttpClient) { }
 
-  public list(): Observable<Persona> {
-    return this.http.get<Persona>(this.personaURL + 'list', cabecera);
+  public create(persona: Persona): Observable<any> {
+    return this.http.post<any>(this.Url + 'create', persona, cabecera);
   }
 
-  public verPersona(): Observable<Persona>{
-    return this.http.get<Persona>(this.personaURL + 'verPersona', cabecera);
+  public list(): Observable<any> {
+    return this.http.get<any>(this.Url + 'list', cabecera);
   }
-
-  public getPersona(id: number): Observable<Persona>{
-    return this.http.get<Persona>(this.personaURL + `detail/${id}`, cabecera);
-  }
-
+  
   public update(id: number, persona: Persona): Observable<any>{
-    return this.http.put<any>(this.personaURL + `update/${id}`, persona, cabecera);
+    return this.http.put<any>(this.Url + `update/${id}`, persona, cabecera);
+  }
+
+  public delete(id: number): Observable<any>{
+    return this.http.delete<any>(this.Url + `delete/${id}`, cabecera);
+  }
+
+  public details(id: number): Observable<any> {
+    return this.http.get<any>(this.Url + `details/${id}`, cabecera);
   }
 
 

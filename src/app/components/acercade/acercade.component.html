@@ -1,6 +1,6 @@
 
 
-<div id="fondocolor" class="border border-dark">
+<div id="fondocolor" class="border border-dark" >
     <!--CARROUSEL-->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="banner">
@@ -24,11 +24,24 @@
         </button>
       </div>
 
-
+      <div class="row">
+        <div class="col-1"></div> 
+        <div class="col-auto">
+            <h1 id="tituloedit">Informacion</h1>
+        </div>
+        <div class="col-auto" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-dark" routerLink="/newAcercaDe">
+                <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
+                <i class="bi bi-clipboard-plus"></i>
+                Nuevo Perfil
+                <!--*ngIf="isLogged"-->
+              </button>
+        </div>
+    </div>
 
     <!--ACERCA DE-->
-    <div class="row d-flex justify-content-evenly" *ngIf="persona">
-        <div class="col-auto" id="perfilfoto" ><!--FOTO-->
+    <div class="row d-flex justify-content-evenly" *ngFor="let persona of personas">
+        <div class="col-auto" id="perfilfoto"  ><!--FOTO-->
             <img src={{persona.foto}} class="img-fluid shadow-lg rounded" alt="fotodeperfil" >
         </div>
         <div class="col-auto"><!--DATOS-->
@@ -48,14 +61,18 @@
             </ul>
         </div>
         <div class="col-auto"><!--ACERCA DE-->
-            <h2 id="nombre">Sobre Mi</h2>
+            <h3 id="nombre">Sobre Mi</h3>
           <p>{{persona.sobreMi}}</p>
         </div>
         <div class="col-auto" *ngIf="isLogged"><!--BOTON EDICION-->
-            <button type="button" class="btn btn-outline-dark" routerLink="/editAcer/:{{persona.id}}"><!--*ngIf="isLogged"-->
+            <button type="button" class="btn btn-outline-dark" routerLink="/editAcer/{{persona.id}}"><!--*ngIf="isLogged"-->
               <span class="spinner-grow spinner-grow-sm text-warning" role="status" aria-hidden="true"></span>
                 <i class="bi bi-pencil-square"></i> Editar
               </button>
+              <button type="buttom" class="btn btn-outline-dark" (click)="delete(persona.id)">
+                <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                <i class="bi bi-x"></i> Eliminar
+            </button>
         </div>
 
     </div>

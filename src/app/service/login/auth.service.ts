@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const AUTH_API = 'http://localhost:8080/auth/';
+//const Url = 'http://localhost:8080/auth/';
+const Url = 'https://portfolio-sebastian-linkanay.koyeb.app/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,14 +22,14 @@ export class AuthService {
 
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'login', {
+    return this.http.post(Url + 'login', {
       username,
       password
     }, httpOptions);
   }
 
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'register', {
+    return this.http.post(Url + 'register', {
       username,
       email,
       password
