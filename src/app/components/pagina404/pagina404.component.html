@@ -35,13 +35,10 @@
       </div>      
     </div>
 </nav>
-<div class="row">
-    <img src="../../../assets/PagenotFound404.jpg" alt="">
-</div>
-<!-- Back to top button -->
-<div class="to-top" (click)="scrollToTop()" [ngClass]="{ 'show-scrollTop': windowScrolled }">
-    <button class="btn border" id="imgscroll">
-        Go to Home
-    </button>
+<div class="container-fluid">
     
-  </div>
+    <button class="btn border" id="imgscroll" routerLink="">
+      <img src="../../../assets/PagenotFound404.jpg" class="img-fluid" alt="">
+      Go to Home
+    </button>
+</div>

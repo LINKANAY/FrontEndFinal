@@ -26,7 +26,7 @@ export class NewSkillComponent {
         alert("Skill añadido");
         this.router.navigate(['']);
       }, error: (err) => {
-        alert("Fallo");
+        alert("Datos mal ingresados");
         this.router.navigate(['']);
       }
     })

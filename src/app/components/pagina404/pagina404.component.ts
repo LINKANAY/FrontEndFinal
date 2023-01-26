@@ -10,18 +10,11 @@ import { TokenStorageService } from 'src/app/service/login/token-storage.service
 export class Pagina404Component implements OnInit {
   
   isLoggedIn = false;
-  windowScrolled = false;
 
-  constructor(private tokenStorage: TokenStorageService,
-    private router: Router){
-
-    
+  constructor(private tokenStorage: TokenStorageService){  
   }
 
   ngOnInit(): void {
-    window.addEventListener('scroll', () => {
-      this.windowScrolled = window.pageYOffset !== 0;
-    });
 
     if(this.tokenStorage.getToken()){
       this.isLoggedIn = true;
@@ -33,10 +26,6 @@ export class Pagina404Component implements OnInit {
   onLogOut(): void {
     this.tokenStorage.signOut();
     window.location.reload();
-  }
-  
-  scrollToTop(): void {
-    this.router.navigate(['home']);
   }
 
 
