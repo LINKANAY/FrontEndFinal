@@ -27,6 +27,10 @@ import { NewProyectoComponent } from './components/proyecto/new-proyecto.compone
 import { EditProyectoComponent } from './components/proyecto/edit-proyecto.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
 import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +59,9 @@ import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.compon
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     
   ],
   providers: [authInterceptorProviders, AuthService],

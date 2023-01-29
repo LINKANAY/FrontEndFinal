@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment ';
+import { environment } from 'src/environments/environment';
 import { TokenStorageService } from './token-storage.service';
 
 //const Url = 'http://localhost:8080/auth/';
 //const Url = 'https://portfolio-sebastian-linkanay.koyeb.app/auth/';
-const Url = environment.link + '/auth/';
+const Url = environment.URL + '/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

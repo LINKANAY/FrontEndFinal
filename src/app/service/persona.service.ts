@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment ';
+import { environment } from 'src/environments/environment';
 import { Persona } from '../models/persona';
 
 const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})};
@@ -13,7 +13,7 @@ export class PersonaService {
 
   //Url = 'http://localhost:8080/personas/';
   //Url = 'https://portfolio-sebastian-linkanay.koyeb.app/personas/'; 
-  Url = environment.link + '/personas/';
+  Url = environment.URL + '/personas/';
 
   constructor(private http: HttpClient) { }
 
