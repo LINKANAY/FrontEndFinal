@@ -26,7 +26,6 @@ import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { NewProyectoComponent } from './components/proyecto/new-proyecto.component';
 import { EditProyectoComponent } from './components/proyecto/edit-proyecto.component';
 import { Pagina404Component } from './components/pagina404/pagina404.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.component';
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { NewAcercaDeComponent } from './components/acercade/new-acerca-de.compon
     NewProyectoComponent,
     EditProyectoComponent,
     Pagina404Component,
-    FileUploadComponent,
     NewAcercaDeComponent 
   ],
   imports: [

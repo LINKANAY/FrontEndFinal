@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment ';
 
 //const Url = 'http://localhost:8080/auth/';
-const Url = 'https://portfolio-sebastian-linkanay.koyeb.app/auth/';
-
+//const Url = 'https://portfolio-sebastian-linkanay.koyeb.app/auth/';
+const Url = environment.link + 'auth';
 @Injectable({
   providedIn: 'root'
 })

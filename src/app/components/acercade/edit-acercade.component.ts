@@ -1,9 +1,6 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Persona } from 'src/app/models/persona';
-import { FileUploadService } from 'src/app/service/file-upload.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({

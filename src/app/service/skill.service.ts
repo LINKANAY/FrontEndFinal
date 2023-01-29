@@ -1,6 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment ';
 import { Skill } from '../models/skill';
 
 const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})};
@@ -11,7 +12,8 @@ const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})
 export class SkillService {
 
   //Url = 'http://localhost:8080/skill/';
-  Url = 'https://portfolio-sebastian-linkanay.koyeb.app/skill/'; 
+  //Url = 'https://portfolio-sebastian-linkanay.koyeb.app/skill/';
+  Url = environment.link + '/skill/';
 
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment ';
 import { ExperienciaLaboral } from '../models/experienciaLaboral';
 
 const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})};
@@ -11,8 +12,9 @@ const cabecera = {headers: new HttpHeaders({'Content-TYpe': 'application/json'})
 export class ExperLabService {
 
   //Url = 'http://localhost:8080/experLab/';
-  Url = 'https://portfolio-sebastian-linkanay.koyeb.app/experLab/'; 
-
+  //Url = 'https://portfolio-sebastian-linkanay.koyeb.app/experLab/'; 
+  Url = environment.link + '/experLab/';
+  
   constructor(private http: HttpClient) { }
 
   public create(experLab: ExperienciaLaboral): Observable<any> {
