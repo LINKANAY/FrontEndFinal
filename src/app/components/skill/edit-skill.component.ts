@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Skill } from 'src/app/models/skill';
+import { ImageService } from 'src/app/service/image.service';
 import { SkillService } from 'src/app/service/skill.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class EditSkillComponent implements OnInit {
 
   constructor(private skillService: SkillService,
               private activeRoute: ActivatedRoute,
+              public imageService: ImageService,
               private router: Router){}
 
   ngOnInit(): void {
@@ -30,6 +32,8 @@ export class EditSkillComponent implements OnInit {
   
   onUpdate(): void {
     const id = +this.activeRoute.snapshot.paramMap.get('id');
+    this.editSkill.logo = this.imageService.Url;    
+    this.imageService.Url = undefined;
     this.skillService.update(id, this.editSkill).subscribe({
       next: (err) => {
         this.router.navigate(['']);
@@ -38,6 +42,11 @@ export class EditSkillComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
+  }
+
+  uploadImage(event: any){    
+    const name = "Skill_" + Date.now();    
+    this.imageService.uploadImage(event, name);
   }
 
 }

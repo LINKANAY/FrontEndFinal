@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExperienciaLaboral } from 'src/app/models/experienciaLaboral';
 import { ExperLabService } from 'src/app/service/exper-lab.service';
+import { ImageService } from 'src/app/service/image.service';
 
 @Component({
   selector: 'app-new-exper-lab',
@@ -20,15 +21,16 @@ export class NewExperLabComponent implements OnInit {
   pais: string = '';
   tareas = new Array();
 
-  //experLab: ExperienciaLaboral = null;
-
   constructor(public experienciaService: ExperLabService,
-    private router: Router) { }
+              public imageService: ImageService, 
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.logo = this.imageService.Url;
+    this.imageService.Url = undefined;
     const experLab = new ExperienciaLaboral(this.nombreEmpresa, this.cargo, this.fechaDeEntrada, 
       this.fechaDeSalida, this.logo, this.ciudad, this.pais, this.tareas);
     
@@ -42,6 +44,11 @@ export class NewExperLabComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
+  }
+
+  uploadImage(event: any){    
+    const name = "ExpLab_" + Date.now();    
+    this.imageService.uploadImage(event, name);
   }
 
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { ExperienciaLaboral } from 'src/app/models/experienciaLaboral';
 import { ExperLabService } from 'src/app/service/exper-lab.service';
+import { ImageService } from 'src/app/service/image.service';
 
 @Component({
   selector: 'app-edit-exper-lab',
@@ -15,12 +16,11 @@ export class EditExperLabComponent implements OnInit {
 
   constructor(public experLabService: ExperLabService,
               private activatedRoute: ActivatedRoute,
+              public imageService: ImageService,
               private router: Router) { }
 
   ngOnInit(): void {
-    //const id = this.activatedRoute.snapshot.params["id"];
-   
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');    
     this.experLabService.details(id).subscribe({
       next: (data) => {
         this.editExperLab = data;
@@ -34,6 +34,8 @@ export class EditExperLabComponent implements OnInit {
 
   onUpdate(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.editExperLab.logo = this.imageService.Url;    
+    this.imageService.Url = undefined
     this.experLabService.update(id, this.editExperLab).subscribe({
       next: (data) => {
         this.router.navigate(['']);
@@ -42,5 +44,10 @@ export class EditExperLabComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
+  }
+
+  uploadImage(event: any){    
+    const name = "ExpLab_" + Date.now();    
+    this.imageService.uploadImage(event, name);
   }
 }

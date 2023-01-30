@@ -7,8 +7,17 @@
         </div>
         <div class="form-control">
             <label for="porcentaje" class="col-form-label">Porcentaje: </label>
-            <input type="text" class="form-control" [(ngModel)]="porcentaje" name="porcentaje" required>
+            <input type="number" class="form-control" [(ngModel)]="porcentaje" name="porcentaje" required>
         </div>
+        <div class="form-control">
+            <label for="logo" class="col-form-label">Logo: </label>
+            <input type="file" class="form-control" name="logo" [(ngModel)]="logo" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <img [src]=imageService.Url style="width: 18rem;">
+        </div>
+        <br>
         <!--BOTONES-->
         <div class="mb-3">
             <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>

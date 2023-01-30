@@ -22,10 +22,6 @@
                         name="fechaDeEgreso" required>
                 </div>
                 <div class="mb-3 form-control">
-                    <label for="logo" class="col-form-label">Logo: </label>
-                    <input type="text" class="form-control" [(ngModel)]="logo" name="logo" required>
-                </div>
-                <div class="mb-3 form-control">
                     <label for="ciudad" class="col-form-label">Ciudad: </label>
                     <input type="text" class="form-control" [(ngModel)]="ciudad" name="ciudad" required>
                 </div>
@@ -33,6 +29,16 @@
                     <label for="pais" class="col-form-label">Pais: </label>
                     <input type="text" class="form-control" [(ngModel)]="pais" name="pais" required>
                 </div>
+                <div class="mb-3 form-control">
+                    <label for="logo" class="col-form-label">Logo: </label>
+                    <input type="file" class="form-control" name="logo" [(ngModel)]="logo" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <img [src]=imageService.Url style="width: 18rem;">
+                </div>
+                <br>
+                <!--BOTONES-->
                 <div class="mb-3">
                     <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Crear</button>

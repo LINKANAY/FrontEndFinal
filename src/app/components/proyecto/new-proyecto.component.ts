@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/models/proyecto';
+import { ImageService } from 'src/app/service/image.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
 
 @Component({
@@ -14,14 +15,18 @@ export class NewProyectoComponent {
   descripcion: string = '';
   img: string = '';
 
-  constructor(private proyectoService: ProyectoService, private router: Router) {
+  constructor(private proyectoService: ProyectoService, 
+              public imageService: ImageService, 
+              private router: Router) {
 
   }
 
   onCreate(): void {
-    const skill = new Proyecto(this.nombreProyecto, this.descripcion, this.img);
+    this.img = this.imageService.Url;
+    this.imageService.Url = undefined;
+    const proyecto = new Proyecto(this.nombreProyecto, this.descripcion, this.img);
 
-    this.proyectoService.create(skill).subscribe({
+    this.proyectoService.create(proyecto).subscribe({
       next: (res) => {
         console.log(res);
         alert("Proyecto añadido");
@@ -32,4 +37,10 @@ export class NewProyectoComponent {
       }
     })
   }
+
+  uploadImage(event: any){    
+    const name = "Proyecto_" + Date.now();    
+    this.imageService.uploadImage(event, name);
+  }
+  
 }

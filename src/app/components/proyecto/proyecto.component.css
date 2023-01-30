@@ -16,5 +16,10 @@
   margin-top: 2%;
 }
 .card{
-  background-color: rgb(188, 198, 127);
+  background-color: rgb(188, 198, 127);  
+  overflow: hidden;
+}
+.distancia{
+  max-height: 200px;
+  object-fit: contain;
 }

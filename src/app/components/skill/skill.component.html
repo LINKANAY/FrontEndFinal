@@ -16,9 +16,14 @@
     <!--skills-->
     <div *ngFor="let skill of skills">
         <div class="row">
+            <div class="col-1"></div>
+            <div class="col-auto">
+                <img [src]="skill.logo" class="imagen">
+            </div>
             <div class="col-auto" id="tituloedit">
                 <h3 >{{skill.nombreSkill}}</h3>
             </div>
+            
             
             <div class="col-auto" *ngIf="isLogged" ><!--BOTONES-->                
                 <button type="buttom" class="btn btn-outline-dark" routerLink="/editSkill/{{skill.id}}">

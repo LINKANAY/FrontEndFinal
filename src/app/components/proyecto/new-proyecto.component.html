@@ -11,8 +11,13 @@
         </div>
         <div class="form-control">
             <label for="img" class="col-form-label">Imagen: </label>
-            <input type="text" class="form-control" [(ngModel)]="img" name="img" required>
+            <input type="file" class="form-control" name="img" [(ngModel)]="img" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
         </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <img [src]=imageService.Url style="width: 18rem;">
+        </div>
+        <br>
         <!--BOTONES-->
         <div class="mb-3">
             <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>

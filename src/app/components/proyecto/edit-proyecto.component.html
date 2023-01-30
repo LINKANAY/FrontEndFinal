@@ -2,17 +2,22 @@
     <form (ngSubmit)="onUpdate()" novalidate>
         <!--DATOS-->
         <div class="form-control">
-            <label for="nombreProyecto" class="col-form-label">Nombre Skill: </label>
+            <label for="nombreProyecto" class="col-form-label">Nombre Proyecto: </label>
             <input type="text" class="form-control" [(ngModel)]="editProyecto.nombreProyecto" name="nombreProyecto" required>
         </div>
         <div class="form-control">
-            <label for="descripcion" class="col-form-label">Porcentaje: </label>
+            <label for="descripcion" class="col-form-label">Descripcion: </label>
             <input type="text" class="form-control" [(ngModel)]="editProyecto.descripcion" name="descripcion" required>
         </div>
         <div class="form-control">
-            <label for="img" class="col-form-label">Imagen: </label>
-            <input type="text" class="form-control" [(ngModel)]="editProyecto.img" name="img" required>
+            <label for="img" class="col-form-label">Imagen: </label>            
+            <input type="file" class="form-control" name="img" [(ngModel)]="editProyecto.img" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
         </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <img [src]=imageService.Url style="width: 18rem;">
+        </div>
+        <br>
         <!--BOTONES-->
         <div class="mb-3">
             <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>

@@ -20,10 +20,6 @@
                 required>
         </div>
         <div class="mb-3 form-control">
-            <label for="foto" class="col-form-label">Foto: </label>
-            <input type="text" class="form-control" id="foto" [(ngModel)]="editPersona.foto" name="foto" required>
-        </div>
-        <div class="mb-3 form-control">
             <label for="ciudad" class="col-form-label">Ciudad: </label>
             <input type="text" class="form-control" id="ciudad" [(ngModel)]="editPersona.ciudad" name="ciudad" required>
         </div>
@@ -31,6 +27,16 @@
             <label for="pais" class="col-form-label">Pais: </label>
             <input type="text" class="form-control" id="pais" [(ngModel)]="editPersona.pais" name="pais" required>
         </div>
+        <div class="mb-3 form-control">
+            <label for="foto" class="col-form-label">Foto: </label>
+            <input type="file" class="form-control" id="foto" name="foto" [(ngModel)]="editPersona.foto" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <img [src]=imageService.Url style="width: 18rem;">
+        </div>
+        <br>
+        <!--BOTONES-->
         <div class="form-footer">
             <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
             <button type="submit" class="btn btn-primary">Actualizar</button>

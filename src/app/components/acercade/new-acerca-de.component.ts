@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Persona } from 'src/app/models/persona';
+import { ImageService } from 'src/app/service/image.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
@@ -19,12 +20,15 @@ export class NewAcercaDeComponent implements OnInit {
   pais: String = '';
 
   constructor(private personaService: PersonaService,
+              public imageService: ImageService,
               private router: Router) {}
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.foto = this.imageService.Url;
+    this.imageService.Url = undefined;
     const persona = new Persona(this.nombre, this.apellido,
                                     this.sobreMi, this.titulo, this.foto, this.ciudad, this.pais);
 
@@ -39,4 +43,10 @@ export class NewAcercaDeComponent implements OnInit {
       }
     });
   }
+
+  uploadImage(event: any){    
+    const name = "Persona_" + Date.now();    
+    this.imageService.uploadImage(event, name);
+  }
+
 }

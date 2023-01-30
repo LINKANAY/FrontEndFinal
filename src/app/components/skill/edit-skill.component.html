@@ -9,6 +9,16 @@
             <label for="porcentaje" class="col-form-label">Porcentaje: </label>
             <input type="text" class="form-control" [(ngModel)]="editSkill.porcentaje" name="porcentaje" required>
         </div>
+        <div class="form-control">
+            <label for="img" class="col-form-label">Imagen: </label>            
+            <input type="file" class="form-control" name="img" [(ngModel)]="editSkill.logo" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <img [src]=imageService.Url style="width: 18rem;">
+        </div>
+        <br>
+        <!--BOTONES-->
         <!--BOTONES-->
         <div class="mb-3">
             <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import { ImageService } from 'src/app/service/image.service';
 
 @Component({
   selector: 'app-edit-educacion',
@@ -14,10 +15,11 @@ export class EditEducacionComponent implements OnInit {
 
   constructor(public educacionService: EducacionService,
               private activatedRoute: ActivatedRoute,
+              public imageService: ImageService,
               private router: Router) { }
 
   ngOnInit(): void {   
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');    
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.educacionService.details(id).subscribe({
       next: (data) => {
         this.editEducacion = data;
@@ -30,7 +32,9 @@ export class EditEducacionComponent implements OnInit {
   }
 
   onUpdate(): void {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');    
+    this.editEducacion.logo = this.imageService.Url;    
+    this.imageService.Url = undefined;
     this.educacionService.update(id, this.editEducacion).subscribe({
       next: (err) => {
         this.router.navigate(['']);
@@ -40,4 +44,10 @@ export class EditEducacionComponent implements OnInit {
       }
     });
   }
+
+  uploadImage(event: any){    
+    const name = "Educacion_" + Date.now();    
+    this.imageService.uploadImage(event, name);
+  }
+
 }

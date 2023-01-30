@@ -23,11 +23,6 @@
                     name="fechaDeSalida" required>
                 </div>
                 <div class="mb-3 form-control">
-                    <label for="logo" class="col-form-label">Logo: </label>
-                    <input type="text" class="form-control" id="logo" [(ngModel)]="editExperLab.logo"
-                     name="logo" required>
-                </div>
-                <div class="mb-3 form-control">
                     <label for="ciudad" class="col-form-label">Ciudad: </label>
                     <input type="text" class="form-control" id="ciudad" [(ngModel)]="editExperLab.ciudad" 
                     name="ciudad" required>
@@ -48,6 +43,16 @@
                             [(ngModel)]="editExperLab.tareas[2]" name="tareas[2]" required></textarea>
                     </div>
                 </div>
+                <div class="mb-3 form-control">
+                    <label for="logo" class="col-form-label">Logo: </label>
+                    <input type="file" class="form-control" id="logo" name="logo" [(ngModel)]="editExperLab.logo"  (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <img [src]=imageService.Url style="width: 18rem;">
+                </div>
+                <br>
+                <!--BOTONES-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
