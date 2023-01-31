@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileUpload } from 'src/app/models/fileUpload';
 import { Proyecto } from 'src/app/models/proyecto';
-import { ImageService } from 'src/app/service/image.service';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
 
 @Component({
@@ -13,9 +14,14 @@ export class EditProyectoComponent implements OnInit {
 
   editProyecto: Proyecto;
 
+  //carga y eliminacion de imagen
+  selectedFiles?: FileList;
+  image?: FileUpload;
+  percentage = 0;
+
   constructor(private proyectoService: ProyectoService,
               private activeRoute: ActivatedRoute,
-              public imageService: ImageService,
+              private uploadService: FileUploadService,
               private router: Router){}
 
   ngOnInit(): void {
@@ -31,11 +37,11 @@ export class EditProyectoComponent implements OnInit {
   }
   
   onUpdate(): void {
+    this.editProyecto.img = this.image.url;
     const id = +this.activeRoute.snapshot.paramMap.get('id');
-    this.editProyecto.img = this.imageService.Url;    
-    this.imageService.Url = undefined;
     this.proyectoService.update(id, this.editProyecto).subscribe({
       next: (err) => {
+        console.log("Proyecto updated successfully");
         this.router.navigate(['']);
       }, error: (err) => {
         alert("Error al actualizar");
@@ -44,14 +50,27 @@ export class EditProyectoComponent implements OnInit {
     });
   }
 
-  uploadImage(event: any){    
-    const name = "Proyecto_" + Date.now();    
-    this.imageService.uploadImage(event, name);
+  selectFile(event:any): void{
+    this.selectedFiles = event.target.files;
+    this.uploadService.deleteFileByUrl(this.editProyecto.img);
   }
-
-  updateImage(event: any){    
-    const name = "NewProyecto_" + Date.now();    
-    this.imageService.uploadImage(event, name);
+  
+  upload(): void {
+    if(this.selectedFiles){
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if(file) {
+        this.image = new FileUpload(file);
+        this.image.name = "EditProyecto_" + Date.now();
+        this.uploadService.pushFileStorage(this.image, this.image.name).subscribe({
+          next:(percentage) => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          }, error: (e) => {
+            console.log(e);
+          }
+        })
+      }
+    }
   }
 
 }

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { ExperienciaLaboral } from 'src/app/models/experienciaLaboral';
+import { FileUpload } from 'src/app/models/fileUpload';
 import { ExperLabService } from 'src/app/service/exper-lab.service';
-import { ImageService } from 'src/app/service/image.service';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 
 @Component({
   selector: 'app-edit-exper-lab',
@@ -14,9 +15,14 @@ export class EditExperLabComponent implements OnInit {
 
   editExperLab : ExperienciaLaboral;
 
+  //carga y eliminacion de imagen
+  selectedFiles?: FileList;
+  img?: FileUpload;
+  percentage = 0;
+
   constructor(public experLabService: ExperLabService,
               private activatedRoute: ActivatedRoute,
-              public imageService: ImageService,
+              private uploadService: FileUploadService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -33,9 +39,8 @@ export class EditExperLabComponent implements OnInit {
   }
 
   onUpdate(): void {
+    this.editExperLab.logo = this.img.url;
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.editExperLab.logo = this.imageService.Url;    
-    this.imageService.Url = undefined
     this.experLabService.update(id, this.editExperLab).subscribe({
       next: (data) => {
         this.router.navigate(['']);
@@ -46,8 +51,27 @@ export class EditExperLabComponent implements OnInit {
     });
   }
 
-  uploadImage(event: any){    
-    const name = "ExpLab_" + Date.now();    
-    this.imageService.uploadImage(event, name);
+  selectFile(event:any): void{
+    this.selectedFiles = event.target.files;
+    this.uploadService.deleteFileByUrl(this.editExperLab.logo);
   }
+  
+  upload(): void {
+    if(this.selectedFiles){
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if(file) {
+        this.img = new FileUpload(file);
+        this.img.name = "EditExpLab_" + Date.now();
+        this.uploadService.pushFileStorage(this.img, this.img.name).subscribe({
+          next:(percentage) => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          }, error: (e) => {
+            console.log(e);
+          }
+        })
+      }
+    }
+  }
+
 }

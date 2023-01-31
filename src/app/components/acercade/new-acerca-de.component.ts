@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileUpload } from 'src/app/models/fileUpload';
 import { Persona } from 'src/app/models/persona';
-import { ImageService } from 'src/app/service/image.service';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PersonaService } from 'src/app/service/persona.service';
   templateUrl: './new-acerca-de.component.html',
   styleUrls: ['./new-acerca-de.component.css']
 })
-export class NewAcercaDeComponent implements OnInit {
+export class NewAcercaDeComponent {
 
   nombre: String = '';
   apellido: String = '';
@@ -19,23 +20,24 @@ export class NewAcercaDeComponent implements OnInit {
   ciudad: String = '';
   pais: String = '';
 
-  constructor(private personaService: PersonaService,
-              public imageService: ImageService,
-              private router: Router) {}
+  //carga y eliminacion de imagen
+  selectedFiles?: FileList;
+  img?: FileUpload;
+  percentage = 0;
 
-  ngOnInit(): void {
-  }
+  constructor(private personaService: PersonaService,
+              private router: Router,
+              private uploadService: FileUploadService) {}
 
   onCreate(): void {
-    this.foto = this.imageService.Url;
-    this.imageService.Url = undefined;
+    this.foto = this.img.url;
     const persona = new Persona(this.nombre, this.apellido,
                                     this.sobreMi, this.titulo, this.foto, this.ciudad, this.pais);
 
     this.personaService.create(persona).subscribe({
       next: (res) => {
         console.log(res);
-        alert("Persona añadida");
+        console.log("Persona añadida");
         this.router.navigate(['']);
       }, error: (err) => {
         alert("Fallo");
@@ -44,9 +46,26 @@ export class NewAcercaDeComponent implements OnInit {
     });
   }
 
-  uploadImage(event: any){    
-    const name = "Persona_" + Date.now();    
-    this.imageService.uploadImage(event, name);
+  selectFile(event:any): void{
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    if(this.selectedFiles){
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if(file) {
+        this.img = new FileUpload(file);
+        this.img.name = "NewPersona_" + Date.now();
+        this.uploadService.pushFileStorage(this.img, this.img.name).subscribe({
+          next:(percentage) => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          }, error: (e) => {
+            console.log(e);
+          }
+        })
+      }
+    }
   }
 
 }

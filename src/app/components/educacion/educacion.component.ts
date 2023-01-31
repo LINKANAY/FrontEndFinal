@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { TokenStorageService } from 'src/app/service/login/token-storage.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class EducacionComponent implements OnInit {
   educaciones: Educacion[];
 
   constructor(private Token: TokenStorageService,
-    private educacionService: EducacionService){}
+    private educacionService: EducacionService,
+    private uploadService: FileUploadService){}
 
   ngOnInit(): void {
     this.getEducaciones();
@@ -32,10 +34,12 @@ export class EducacionComponent implements OnInit {
     });
   }
 
-  public delete(id?: number): void {
+  public delete(id?: number, url?: string): void {
     if(id != undefined) {
+      this.uploadService.deleteFileByUrl(url);
       this.educacionService.delete(id).subscribe({
         next: (res) => {
+          console.log("Educacion eliminada");
           this.getEducaciones();
         }, error: (err) => {
           alert("No se pudo eliminar la educacion");

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FileUpload } from 'src/app/models/fileUpload';
 import { Skill } from 'src/app/models/skill';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { TokenStorageService } from 'src/app/service/login/token-storage.service';
 import { SkillService } from 'src/app/service/skill.service';
 
@@ -14,7 +16,9 @@ export class SkillComponent implements OnInit {
 
   skills: Skill[];
 
-  constructor(private Token: TokenStorageService, private skillService: SkillService){
+  constructor(private Token: TokenStorageService, 
+              private skillService: SkillService,
+              private uploadService: FileUploadService){
 
   }
 
@@ -33,10 +37,12 @@ export class SkillComponent implements OnInit {
     });
   }
 
-  public delete(id?: number): void {
+  public delete(id?: number, url?: string): void {
     if(id != undefined) {
+      this.uploadService.deleteFileByUrl(url);
       this.skillService.delete(id).subscribe({
         next: (res) => {
+          console.log("Skill eliminado");
           this.getSkills();
         }, error: (err) => {
           alert("No se pudo eliminar el skill");
@@ -44,6 +50,5 @@ export class SkillComponent implements OnInit {
       });
     }
   }
-
 
 }

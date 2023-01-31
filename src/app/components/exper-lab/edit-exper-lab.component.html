@@ -1,38 +1,38 @@
-<div class="contailer" *ngIf="editExperLab"><!---->
+<div class="container" *ngIf="editExperLab">
     <div class="row">
         <div>
             <form (ngSubmit)="onUpdate()" novalidate >
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="nombreEmpresa" class="col-form-label">Nombre Empresa: </label>
                     <input type="text" class="form-control" [(ngModel)]="editExperLab.nombreEmpresa" 
                     name="nombreEmpresa" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="cargo" class="col-form-label">Cargo: </label>
                     <input type="text" class="form-control" id="cargo" [(ngModel)]="editExperLab.cargo" 
                     name="cargo" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeEntrada" class="col-form-label">Fecha de Ingreso: </label>
                     <input type="text" class="form-control" id="fechaDeEntrada" [(ngModel)]="editExperLab.fechaDeEntrada"
                         name="fechaDeEntrada" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeSalida" class="col-form-label">Fecha de Salida: </label>
                     <input type="text" class="form-control" id="fechaDeSalida" [(ngModel)]="editExperLab.fechaDeSalida" 
                     name="fechaDeSalida" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="ciudad" class="col-form-label">Ciudad: </label>
                     <input type="text" class="form-control" id="ciudad" [(ngModel)]="editExperLab.ciudad" 
                     name="ciudad" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="pais" class="col-form-label">Pais: </label>
                     <input type="text" class="form-control" id="pais" [(ngModel)]="editExperLab.pais" 
                     name="pais" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <div class="input-group">
                         <span class="input-group-text">Tareas</span>
                         <textarea class="form-control" aria-label="Tareas" type="text" class="form-control" id="tareas"
@@ -43,21 +43,26 @@
                             [(ngModel)]="editExperLab.tareas[2]" name="tareas[2]" required></textarea>
                     </div>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="logo" class="col-form-label">Logo: </label>
-                    <input type="file" class="form-control" id="logo" name="logo" [(ngModel)]="editExperLab.logo"  (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+                    <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
+                </div>
+                <div class="progress mt-2" *ngIf="img">
+                    <div class="progress-bar progress-bar-info" 
+                            role="progressbar" 
+                            attr.aria-valuenow="{{ percentage }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [ngStyle]="{ width: percentage + '%' }">
+                        {{percentage}}%
+                    </div>
                 </div>
                 <br>
-                <div class="d-flex justify-content-center">
-                    <img [src]=imageService.Url style="width: 18rem;">
-                </div>
-                <br>
-                <!--BOTONES-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                </div>
-
+                <!--BOTONES-->                
+                <div class="col-auto">
+                    <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Actualizar</button>
+                </div> 
             </form>
         </div>
     </div>

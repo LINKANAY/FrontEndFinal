@@ -4,12 +4,12 @@ export class Educacion {
     titulo: String;
     fechaDeIngreso: String;
     fechaDeEgreso: String;
-    logo: String;
+    logo: string;
     ciudad: String;
     pais: String;
 
     constructor(nombreInstitucion: String, titulo: String, fechaDeIngreso: String,
-        fechaDeEgreso: String, logo: String, ciudad: String, pais: String) {
+        fechaDeEgreso: String, logo: string, ciudad: String, pais: String) {
             this.nombreInstitucion = nombreInstitucion;
             this.titulo = titulo;
             this.fechaDeIngreso = fechaDeIngreso;

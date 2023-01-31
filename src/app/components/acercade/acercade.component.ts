@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Persona } from 'src/app/models/persona';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { TokenStorageService } from 'src/app/service/login/token-storage.service';
 import { PersonaService } from 'src/app/service/persona.service';
 
@@ -14,8 +14,9 @@ export class AcercadeComponent implements OnInit {
 
   personas: Persona[];
   
-  constructor(private personaService: PersonaService, private activatedRoute: ActivatedRoute,
-              private tokenStorageService: TokenStorageService) { }
+  constructor(private personaService: PersonaService,
+              private tokenStorageService: TokenStorageService,
+              private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
     
@@ -33,12 +34,14 @@ export class AcercadeComponent implements OnInit {
     });
   }
 
-  public delete(id?: number): void {
+  public delete(id?: number, url?: string): void {
     if(id != undefined) {
+      this.uploadService.deleteFileByUrl(url);
       this.personaService.delete(id).subscribe({
-        next: (res) => {
+        next: () => {
+          console.log("Persona eliminado");
           this.getPersona();
-        }, error: (err) => {
+        }, error: () => {
           alert("No se pudo eliminar la persona");
         }
       });

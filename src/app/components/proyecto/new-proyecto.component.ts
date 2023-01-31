@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileUpload } from 'src/app/models/fileUpload';
 import { Proyecto } from 'src/app/models/proyecto';
-import { ImageService } from 'src/app/service/image.service';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
 
 @Component({
@@ -15,21 +16,25 @@ export class NewProyectoComponent {
   descripcion: string = '';
   img: string = '';
 
-  constructor(private proyectoService: ProyectoService, 
-              public imageService: ImageService, 
+  //carga y eliminacion de imagen
+  selectedFiles?: FileList;
+  image?: FileUpload;
+  percentage = 0;
+
+  constructor(private proyectoService: ProyectoService,
+              private uploadService: FileUploadService,
               private router: Router) {
 
   }
 
   onCreate(): void {
-    this.img = this.imageService.Url;
-    this.imageService.Url = undefined;
+    this.img = this.image.url;
     const proyecto = new Proyecto(this.nombreProyecto, this.descripcion, this.img);
 
     this.proyectoService.create(proyecto).subscribe({
       next: (res) => {
         console.log(res);
-        alert("Proyecto añadido");
+        console.log("Proyecto añadido");
         this.router.navigate(['']);
       }, error: (err) => {
         alert("Fallo");
@@ -38,9 +43,26 @@ export class NewProyectoComponent {
     })
   }
 
-  uploadImage(event: any){    
-    const name = "Proyecto_" + Date.now();    
-    this.imageService.uploadImage(event, name);
+  selectFile(event:any): void{
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    if(this.selectedFiles){
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if(file) {
+        this.image = new FileUpload(file);
+        this.image.name = "NewProyecto_" + Date.now();
+        this.uploadService.pushFileStorage(this.image, this.image.name).subscribe({
+          next:(percentage) => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          }, error: (e) => {
+            console.log(e);
+          }
+        })
+      }
+    }
   }
   
 }

@@ -1,53 +1,57 @@
-<div class="contailer" *ngIf="editEducacion"><!---->
+<div class="container" *ngIf="editEducacion"><!---->
     <div class="row">
         <div>
             <form (ngSubmit)="onUpdate()" novalidate >
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="nombreInstitucion" class="col-form-label">Nombre Institucion: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.nombreInstitucion" 
                     name="nombreInstitucion" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="titulo" class="col-form-label">Titulo: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.titulo" 
                     name="titulo" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeIngreso" class="col-form-label">Fecha de Ingreso: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.fechaDeIngreso"
                         name="fechaDeIngreso" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeEgreso" class="col-form-label">Fecha de Egreso: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.fechaDeEgreso" 
                     name="fechaDeEgreso" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="ciudad" class="col-form-label">Ciudad: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.ciudad" 
                     name="ciudad" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="pais" class="col-form-label">Pais: </label>
                     <input type="text" class="form-control" [(ngModel)]="editEducacion.pais" 
                     name="pais" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="logo" class="col-form-label">Logo: </label>
-                    <input type="file" class="form-control" name="logo" [(ngModel)]="editEducacion.logo"
-                       (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-center">
-                        <img [src]=imageService.Url style="width: 18rem;">
-                    </div>
-                    <br>
-                    <!--BOTONES-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" routerLink="">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
                 </div>
-
+                <div class="progress mt-2" *ngIf="img">
+                    <div class="progress-bar progress-bar-info" 
+                            role="progressbar" 
+                            attr.aria-valuenow="{{ percentage }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [ngStyle]="{ width: percentage + '%' }">
+                        {{percentage}}%
+                    </div>
+                </div>
+                <br>
+                <!--BOTONES-->                
+                <div class="col-auto">
+                    <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Actualizar</button>
+                </div>    
             </form>
         </div>
     </div>

@@ -1,35 +1,35 @@
-<div class="contailer">
+<div class="container">
     <div class="row">
         <div>
             <form (ngSubmit)="onCreate()" novalidate >
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="nombreEmpresa" class="col-form-label">Nombre Empresa: </label>
                     <input type="text" class="form-control" id="nombreEmpresa" [(ngModel)]="nombreEmpresa"
                         name="nombreEmpresa" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="cargo" class="col-form-label">Cargo: </label>
                     <input type="text" class="form-control" id="cargo" [(ngModel)]="cargo" name="cargo" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeEntrada" class="col-form-label">Fecha de Ingreso: </label>
                     <input type="text" class="form-control" id="fechaDeEntrada" [(ngModel)]="fechaDeEntrada"
                         name="fechaDeEntrada" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="fechaDeSalida" class="col-form-label">Fecha de Salida: </label>
                     <input type="text" class="form-control" id="fechaDeSalida" [(ngModel)]="fechaDeSalida"
                         name="fechaDeSalida" required>
                 </div>                
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="ciudad" class="col-form-label">Ciudad: </label>
                     <input type="text" class="form-control" id="ciudad" [(ngModel)]="ciudad" name="ciudad" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="pais" class="col-form-label">Pais: </label>
                     <input type="text" class="form-control" id="pais" [(ngModel)]="pais" name="pais" required>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <div class="input-group">
                         <span class="input-group-text">Tareas</span>
                         <textarea class="form-control" aria-label="Tareas" type="text" class="form-control" id="tareas"
@@ -40,21 +40,26 @@
                             [(ngModel)]="tareas[2]" name="tareas" required></textarea>
                     </div>
                 </div>
-                <div class="mb-3 form-control">
+                <div class="form-control">
                     <label for="logo" class="col-form-label">Logo: </label>
-                    <input type="file" class="form-control" id="logo" name="logo"  [(ngModel)]="logo" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+                    <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
+                </div>
+                <div class="progress mt-2" *ngIf="img">
+                    <div class="progress-bar progress-bar-info" 
+                            role="progressbar" 
+                            attr.aria-valuenow="{{ percentage }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [ngStyle]="{ width: percentage + '%' }">
+                        {{percentage}}%
+                    </div>
                 </div>
                 <br>
-                <div class="d-flex justify-content-center">
-                    <img [src]=imageService.Url style="width: 18rem;">
-                </div>
-                <br>
-                <!--BOTONES-->
-                <div class="mb-3">
-                    <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Crear</button>
-                </div>
-
+                <!--BOTONES-->                
+                <div class="col-auto">
+                    <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Crear</button>
+                </div>                
             </form>
         </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from 'src/app/models/proyecto';
+import { FileUploadService } from 'src/app/service/file-upload.service';
 import { TokenStorageService } from 'src/app/service/login/token-storage.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
 
@@ -15,7 +16,8 @@ export class ProyectoComponent implements OnInit {
   proyectos: Proyecto[];
 
   constructor(private Token: TokenStorageService,
-    private proyectoService: ProyectoService){}
+    private proyectoService: ProyectoService,
+    private uploadService: FileUploadService){}
 
   ngOnInit(): void {
     this.getProyectos();
@@ -32,13 +34,15 @@ export class ProyectoComponent implements OnInit {
     });
   }
 
-  public delete(id?: number): void {
+  public delete(id?: number, url?: string): void {
     if(id != undefined) {
+      this.uploadService.deleteFileByUrl(url);
       this.proyectoService.delete(id).subscribe({
         next: (res) => {
+          console.log("Proyecto eliminado");
           this.getProyectos();
         }, error: (err) => {
-          alert("No se pudo eliminar la educacion");
+          alert("No se pudo eliminar el proyecto");
         }
       });
     }

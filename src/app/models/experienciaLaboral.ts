@@ -4,14 +4,14 @@ export class ExperienciaLaboral{
     cargo: String;
     fechaDeEntrada: String;
     fechaDeSalida: String;
-    logo: String;
+    logo: string;
     ciudad: String;
     pais: String;
     tareas: String[];
 
     constructor(
         nombreEmpresa: String, cargo: String, fechaDeEntrada: String,
-        fechaDeSalida: String, logo: String, ciudad: String,
+        fechaDeSalida: String, logo: string, ciudad: String,
         pais: String, tareas: String[]){
             this.nombreEmpresa = nombreEmpresa;
             this.cargo = cargo;

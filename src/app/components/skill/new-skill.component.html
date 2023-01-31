@@ -11,17 +11,23 @@
         </div>
         <div class="form-control">
             <label for="logo" class="col-form-label">Logo: </label>
-            <input type="file" class="form-control" name="logo" [(ngModel)]="logo" (change)="uploadImage($event)" accept=".jpeg, .jpg, .png">
+            <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
+        </div>
+        <div class="progress mt-2" *ngIf="img">
+            <div class="progress-bar progress-bar-info" 
+                    role="progressbar" 
+                    attr.aria-valuenow="{{ percentage }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    [ngStyle]="{ width: percentage + '%' }">
+                {{percentage}}%
+            </div>
         </div>
         <br>
-        <div class="d-flex justify-content-center">
-            <img [src]=imageService.Url style="width: 18rem;">
-        </div>
-        <br>
-        <!--BOTONES-->
-        <div class="mb-3">
-            <button type="button" class="btn btn-secondary" routerLink="/home">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Crear</button>
-        </div>
+        <!--BOTONES-->                
+        <div class="col-auto">
+            <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
+            <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Crear</button>
+        </div>    
     </form>
 </div>
