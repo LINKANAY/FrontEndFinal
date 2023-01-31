@@ -4,7 +4,7 @@ export class Persona{
     apellido: String;
     sobreMi: String;
     titulo: String;    
-    foto: String;
+    foto: string;
     ciudad: String;
     pais: String;
 
@@ -15,7 +15,7 @@ export class Persona{
         apellido: String, 
         sobreMi: String, 
         titulo: String, 
-        foto: String, 
+        foto: string, 
         ciudad: String, 
         pais: String) {
             this.nombre = nombre;

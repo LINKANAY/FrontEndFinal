@@ -15,7 +15,7 @@ export class NewAcercaDeComponent implements OnInit {
   apellido: String = '';
   sobreMi: String = '';
   titulo: String = '';
-  foto: String = '';
+  foto: string = '';
   ciudad: String = '';
   pais: String = '';
 

@@ -41,7 +41,7 @@ export class ImageService {
     if(this.previousImage){
       this.storage.ref(this.previousImage).delete();
     }
-    this.previousImage = filePath;
+    //this.previousImage = filePath;
   }
 
 
