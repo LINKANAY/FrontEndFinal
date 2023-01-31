@@ -18,5 +18,9 @@
 #imgscroll{
   bottom: 25px;
   right: 25px;
-  background-color: chartreuse;
+  background-color: rgb(218, 145, 195);
+}
+.cuadro{
+  display: flex;
+  justify-content: center;
 }

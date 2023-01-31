@@ -22,4 +22,5 @@
 .distancia{
   max-height: 200px;
   object-fit: contain;
+  background-color: lightpink;
 }
