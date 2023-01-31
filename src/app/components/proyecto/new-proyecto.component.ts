@@ -14,6 +14,7 @@ export class NewProyectoComponent {
 
   nombreProyecto: string = '';
   descripcion: string = '';
+  url : string = '';
   img: string = '';
 
   //carga y eliminacion de imagen
@@ -29,7 +30,7 @@ export class NewProyectoComponent {
 
   onCreate(): void {
     this.img = this.image.url;
-    const proyecto = new Proyecto(this.nombreProyecto, this.descripcion, this.img);
+    const proyecto = new Proyecto(this.nombreProyecto, this.descripcion, this.url, this.img);
 
     this.proyectoService.create(proyecto).subscribe({
       next: (res) => {

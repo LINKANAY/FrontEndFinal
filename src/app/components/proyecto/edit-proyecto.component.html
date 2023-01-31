@@ -10,6 +10,10 @@
             <input type="text" class="form-control" [(ngModel)]="editProyecto.descripcion" name="descripcion" required>
         </div>
         <div class="form-control">
+            <label for="url" class="col-form-label">Url Proyecto: </label>
+            <input type="text" class="form-control" [(ngModel)]="editProyecto.url" name="url" required>
+        </div>
+        <div class="form-control">
             <label for="img" class="col-form-label">Imagen: </label>
             <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
         </div>

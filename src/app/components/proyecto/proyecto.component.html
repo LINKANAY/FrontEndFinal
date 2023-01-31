@@ -21,7 +21,7 @@
         <ul class="list-group-horizontal col-auto" *ngFor="let proyecto of proyectos" id="espacio">
             <li class="list-group-item">
                 <div class="card"  style="width: 18rem;" >
-                    <a href="#"><img class="img-fluid card-img-top distancia" [src]='proyecto.img' alt="imagen {{proyecto.nombreProyecto}}"></a>
+                    <a [href]='proyecto.url'><img class="img-fluid card-img-top distancia" [src]='proyecto.img' alt="imagen {{proyecto.nombreProyecto}}"></a>
                     <div class="card-body">
                         <h3 class="card-title">{{proyecto.nombreProyecto}}</h3>
                         <p class="card-text">{{proyecto.descripcion}}</p>
