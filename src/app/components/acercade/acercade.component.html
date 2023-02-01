@@ -30,7 +30,7 @@
             <h1 id="tituloedit">Informacion</h1>
         </div>
         <div class="col-auto" *ngIf="isLogged">
-            <button type="button" class="btn btn-outline-dark" routerLink="/newAcercaDe">
+            <button type="button" class="btn btn-outline-dark" routerLink="/newAcercaDe" *ngIf="mostrarAdd" (click)="hideButton()">
                 <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
                 <i class="bi bi-clipboard-plus"></i>
                 Nuevo Perfil

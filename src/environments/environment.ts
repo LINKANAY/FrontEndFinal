@@ -9,7 +9,7 @@ export const environment = {
     messagingSenderId: '178608934405',
     measurementId: 'G-R9JFCGKXVQ',
   },
-    production: false,
+    production: true,
     URL:'http://localhost:8080',
     name:'development environment',
     code: 1001,

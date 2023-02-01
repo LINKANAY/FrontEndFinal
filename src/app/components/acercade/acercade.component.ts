@@ -13,16 +13,17 @@ export class AcercadeComponent implements OnInit {
   isLogged = false;
 
   personas: Persona[];
+  mostrarAdd: boolean = true;
   
   constructor(private personaService: PersonaService,
               private tokenStorageService: TokenStorageService,
-              private uploadService: FileUploadService) { }
+              private uploadService: FileUploadService) {
+               }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {    
     this.getPersona();
     if(this.tokenStorageService.getToken()){
-      this.isLogged = true;
+      this.isLogged = true;     
     } else {
       this.isLogged = false;
     }
@@ -30,12 +31,17 @@ export class AcercadeComponent implements OnInit {
 
   async getPersona(): Promise<void> { 
     this.personaService.list().subscribe(personas =>{
+      if(personas.length){
+        this.mostrarAdd = false;        
+      }
       this.personas = personas;
+      
     });
   }
 
   public delete(id?: number, url?: string): void {
     if(id != undefined) {
+      this.mostrarAdd = true;
       this.uploadService.deleteFileByUrl(url);
       this.personaService.delete(id).subscribe({
         next: () => {
@@ -46,6 +52,11 @@ export class AcercadeComponent implements OnInit {
         }
       });
     }
+  }
+
+
+  hideButton() {
+    this.mostrarAdd = false;
   }
 
 
