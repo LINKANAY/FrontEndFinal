@@ -36,7 +36,9 @@ export class EducacionComponent implements OnInit {
 
   public delete(id?: number, url?: string): void {
     if(id != undefined) {
-      this.uploadService.deleteFileByUrl(url);
+      if(url.startsWith('https://firebasestorage')){
+        this.uploadService.deleteFileByUrl(url);
+      }
       this.educacionService.delete(id).subscribe({
         next: (res) => {
           console.log("Educacion eliminada");

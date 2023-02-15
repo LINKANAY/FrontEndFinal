@@ -39,7 +39,9 @@ export class SkillComponent implements OnInit {
 
   public delete(id?: number, url?: string): void {
     if(id != undefined) {
-      this.uploadService.deleteFileByUrl(url);
+      if(url.startsWith('https://firebasestorage')){
+        this.uploadService.deleteFileByUrl(url);
+      }
       this.skillService.delete(id).subscribe({
         next: (res) => {
           console.log("Skill eliminado");

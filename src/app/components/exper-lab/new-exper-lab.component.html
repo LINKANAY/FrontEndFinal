@@ -41,7 +41,9 @@
                     </div>
                 </div>
                 <div class="form-control">
-                    <label for="logo" class="col-form-label">Logo: </label>
+                    <label for="logo" class="col-form-label">
+                        <input class="form-check-input mt-0" type="checkbox" value="" (click)="chekboxChange()" aria-label="Checkbox for following text input">                
+                        Logo: </label>
                     <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
                 </div>
                 <div class="progress mt-2" *ngIf="img">
@@ -57,9 +59,9 @@
                 <br>
                 <!--BOTONES-->                
                 <div class="col-auto">
-                    <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
-                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Crear</button>
-                </div>                
+                    <button type="button" class="btn btn-success btn-sm" [hidden]="checkbox === false" [disabled]="!selectedFiles" (click)="upload()" (click)="chekboxChange()">Upload</button>            
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="(checkbox === true)">Crear</button>
+                </div>            
             </form>
         </div>
     </div>

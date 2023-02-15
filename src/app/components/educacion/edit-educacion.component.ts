@@ -18,6 +18,7 @@ export class EditEducacionComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
 
   constructor(public educacionService: EducacionService,
               private activatedRoute: ActivatedRoute,
@@ -38,7 +39,9 @@ export class EditEducacionComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.editEducacion.logo = this.img.url;
+    if(this.percentage > 0){
+      this.editEducacion.logo = this.img.url;
+    }
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.educacionService.update(id, this.editEducacion).subscribe({
       next: (err) => {
@@ -71,6 +74,14 @@ export class EditEducacionComponent implements OnInit {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

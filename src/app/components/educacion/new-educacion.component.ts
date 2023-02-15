@@ -24,6 +24,8 @@ export class NewEducacionComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
+  dato: boolean = false;
 
   constructor(private educacionService: EducacionService,
               private uploadService: FileUploadService,
@@ -33,7 +35,9 @@ export class NewEducacionComponent implements OnInit {
   }
 
   onCreate(): void {
-    this.logo = this.img.url;
+    if(this.dato){
+      this.logo = this.img.url;
+    }
     const educacion = new Educacion(this.nombreInstitucion, this.titulo, this.fechaDeIngreso,
                                     this.fechaDeEgreso, this.logo, this.ciudad, this.pais);
 
@@ -51,6 +55,7 @@ export class NewEducacionComponent implements OnInit {
 
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
+    this.dato = true;
   }
 
   upload(): void {
@@ -68,6 +73,14 @@ export class NewEducacionComponent implements OnInit {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

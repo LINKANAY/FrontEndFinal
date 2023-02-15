@@ -19,6 +19,7 @@ export class EditExperLabComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
 
   constructor(public experLabService: ExperLabService,
               private activatedRoute: ActivatedRoute,
@@ -39,7 +40,9 @@ export class EditExperLabComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.editExperLab.logo = this.img.url;
+    if(this.percentage > 0){
+      this.editExperLab.logo = this.img.url;
+    }
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.experLabService.update(id, this.editExperLab).subscribe({
       next: (data) => {
@@ -71,6 +74,14 @@ export class EditExperLabComponent implements OnInit {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

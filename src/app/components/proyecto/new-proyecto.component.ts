@@ -21,6 +21,8 @@ export class NewProyectoComponent {
   selectedFiles?: FileList;
   image?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
+  dato: boolean = false;
 
   constructor(private proyectoService: ProyectoService,
               private uploadService: FileUploadService,
@@ -29,7 +31,9 @@ export class NewProyectoComponent {
   }
 
   onCreate(): void {
-    this.img = this.image.url;
+    if(this.dato){
+      this.img = this.image.url;
+    }    
     const proyecto = new Proyecto(this.nombreProyecto, this.descripcion, this.url, this.img);
 
     this.proyectoService.create(proyecto).subscribe({
@@ -46,6 +50,7 @@ export class NewProyectoComponent {
 
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
+    this.dato = true;
   }
 
   upload(): void {
@@ -63,6 +68,14 @@ export class NewProyectoComponent {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
   

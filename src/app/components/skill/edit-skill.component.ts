@@ -18,6 +18,7 @@ export class EditSkillComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
 
   constructor(private skillService: SkillService,
               private activeRoute: ActivatedRoute,
@@ -37,7 +38,9 @@ export class EditSkillComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.editSkill.logo = this.img.url;
+    if(this.percentage > 0){
+      this.editSkill.logo = this.img.url;
+    }
     const id = +this.activeRoute.snapshot.paramMap.get('id');
     this.skillService.update(id, this.editSkill).subscribe({
       next: (err) => {
@@ -72,6 +75,14 @@ export class EditSkillComponent implements OnInit {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

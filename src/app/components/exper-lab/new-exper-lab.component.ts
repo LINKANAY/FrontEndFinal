@@ -26,6 +26,8 @@ export class NewExperLabComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
+  dato: boolean = false;
 
   constructor(public experienciaService: ExperLabService,
               private uploadService: FileUploadService,
@@ -35,7 +37,9 @@ export class NewExperLabComponent implements OnInit {
   }
 
   onCreate(): void {
-    this.logo = this.img.url;
+    if(this.dato){
+      this.logo = this.img.url;
+    }
     const experLab = new ExperienciaLaboral(this.nombreEmpresa, this.cargo, this.fechaDeEntrada, 
       this.fechaDeSalida, this.logo, this.ciudad, this.pais, this.tareas);
     
@@ -53,6 +57,7 @@ export class NewExperLabComponent implements OnInit {
 
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
+    this.dato = true;
   }
 
   upload(): void {
@@ -73,6 +78,12 @@ export class NewExperLabComponent implements OnInit {
     }
   }
 
-
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
+    }
+  }
 
 }

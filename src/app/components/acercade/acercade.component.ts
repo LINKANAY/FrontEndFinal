@@ -42,7 +42,9 @@ export class AcercadeComponent implements OnInit {
   public delete(id?: number, url?: string): void {
     if(id != undefined) {
       this.mostrarAdd = true;
-      this.uploadService.deleteFileByUrl(url);
+      if(url.startsWith('https://firebasestorage')){
+        this.uploadService.deleteFileByUrl(url);
+      }
       this.personaService.delete(id).subscribe({
         next: () => {
           console.log("Persona eliminado");

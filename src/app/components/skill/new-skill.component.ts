@@ -20,6 +20,8 @@ export class NewSkillComponent {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
+  dato: boolean = false;
 
   constructor(private skillService: SkillService,
               private router: Router,
@@ -28,7 +30,9 @@ export class NewSkillComponent {
   }
 
   onCreate(): void {
-    this.logo = this.img.url;
+    if(this.dato){
+      this.logo = this.img.url;
+    }
     const skill = new Skill(this.nombreSkill, this.porcentaje, this.logo);
     this.skillService.create(skill).subscribe({
       next: (res) => {
@@ -44,6 +48,7 @@ export class NewSkillComponent {
 
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
+    this.dato = true;
   }
 
   upload(): void {
@@ -61,6 +66,14 @@ export class NewSkillComponent {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

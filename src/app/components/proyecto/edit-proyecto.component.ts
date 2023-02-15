@@ -18,6 +18,7 @@ export class EditProyectoComponent implements OnInit {
   selectedFiles?: FileList;
   image?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
 
   constructor(private proyectoService: ProyectoService,
               private activeRoute: ActivatedRoute,
@@ -37,7 +38,10 @@ export class EditProyectoComponent implements OnInit {
   }
   
   onUpdate(): void {
-    this.editProyecto.img = this.image.url;
+    if(this.percentage > 0){
+      this.editProyecto.img = this.image.url;
+    }
+    //this.editProyecto.img = this.image.url;
     const id = +this.activeRoute.snapshot.paramMap.get('id');
     this.proyectoService.update(id, this.editProyecto).subscribe({
       next: (err) => {
@@ -70,6 +74,14 @@ export class EditProyectoComponent implements OnInit {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

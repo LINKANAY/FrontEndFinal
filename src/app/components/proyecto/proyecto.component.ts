@@ -36,7 +36,9 @@ export class ProyectoComponent implements OnInit {
 
   public delete(id?: number, url?: string): void {
     if(id != undefined) {
-      this.uploadService.deleteFileByUrl(url);
+      if(url.startsWith('https://firebasestorage')){
+        this.uploadService.deleteFileByUrl(url);
+      }
       this.proyectoService.delete(id).subscribe({
         next: (res) => {
           console.log("Proyecto eliminado");

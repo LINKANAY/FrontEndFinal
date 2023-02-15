@@ -24,13 +24,17 @@ export class NewAcercaDeComponent {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
+  dato: boolean = false;
 
   constructor(private personaService: PersonaService,
               private router: Router,
               private uploadService: FileUploadService) {}
 
   onCreate(): void {
-    this.foto = this.img.url;
+    if(this.dato){
+      this.foto = this.img.url;
+    }
     const persona = new Persona(this.nombre, this.apellido,
                                     this.sobreMi, this.titulo, this.foto, this.ciudad, this.pais);
 
@@ -48,6 +52,7 @@ export class NewAcercaDeComponent {
 
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
+    this.dato = true;
   }
 
   upload(): void {
@@ -65,6 +70,14 @@ export class NewAcercaDeComponent {
           }
         })
       }
+    }
+  }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
     }
   }
 

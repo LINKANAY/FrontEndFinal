@@ -18,6 +18,7 @@ export class EditAcercadeComponent implements OnInit {
   selectedFiles?: FileList;
   img?: FileUpload;
   percentage = 0;
+  checkbox : boolean = false;
 
   constructor(public personaService: PersonaService,
               private activatedRoute: ActivatedRoute,
@@ -38,7 +39,9 @@ export class EditAcercadeComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.editPersona.foto = this.img.url;
+    if(this.percentage > 0){
+      this.editPersona.foto = this.img.url;
+    }
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.personaService.update(id, this.editPersona).subscribe({
       next: (err) => {
@@ -73,4 +76,13 @@ export class EditAcercadeComponent implements OnInit {
       }
     }
   }
+
+  chekboxChange(){
+    if(this.checkbox){
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
+    }
+  }
+  
 }

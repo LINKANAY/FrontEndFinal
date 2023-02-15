@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <form (ngSubmit)="onCreate()" novalidate>
         <!--DATOS-->
         <div class="form-control">
@@ -11,10 +11,12 @@
         </div>
         <div class="form-control">
             <label for="url" class="col-form-label">Url Proyecto: </label>
-            <input type="text" class="form-control" [(ngModel)]="url" name="url" required>
+            <input type="text" class="form-control" [(ngModel)]="url" name="url" >
         </div>
         <div class="form-control">
-            <label for="img" class="col-form-label">Imagen: </label>
+            <label for="img" class="col-form-label">
+                <input class="form-check-input mt-0" type="checkbox" value="" (click)="chekboxChange()" aria-label="Checkbox for following text input">
+                Imagen: </label>
             <input type="file" class="form-control text-nowrap text-truncate" (change)="selectFile($event)" accept=".jpeg, .jpg, .png">
         </div>
         <div class="progress mt-2" *ngIf="image">
@@ -30,8 +32,8 @@
         <br>
         <!--BOTONES-->                
         <div class="col-auto">
-            <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Upload</button>            
-            <button type="submit" class="btn btn-primary btn-sm" [disabled]="!(percentage === 100)">Crear</button>
+            <button type="button" class="btn btn-success btn-sm" [hidden]="checkbox === false" [disabled]="!selectedFiles" (click)="upload()" (click)="chekboxChange()">Upload</button>            
+            <button type="submit" class="btn btn-primary btn-sm" [disabled]="(checkbox === true)">Crear</button>
         </div>    
     </form>
 </div>
